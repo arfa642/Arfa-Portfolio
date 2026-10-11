@@ -46,7 +46,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="about" className="section-wrapper" style={{ paddingTop: '7.5rem', paddingBottom: '4rem' }}>
+    <section id="about" className="section-wrapper hero-section-wrapper" style={{ paddingTop: 'calc(5rem + 1.5vw)', paddingBottom: '3.5rem' }}>
       <div className="container">
         
         {/* Main 2-Column Hero Grid */}
@@ -56,39 +56,81 @@ export default function Hero() {
           {/* Left Column: Identity & Value Proposition */}
           <div>
             
+            {/* Mobile Portrait Hero Banner (Visible on Mobile / iPhone SE) */}
+            <div className="hero-mobile-avatar" style={{ marginBottom: '1rem' }}>
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                padding: '0.4rem 0.85rem 0.4rem 0.4rem',
+                backgroundColor: '#ffffff',
+                border: '1px solid #e2e8f0',
+                borderRadius: 'var(--radius-full)',
+                boxShadow: '0 4px 14px rgba(5, 150, 105, 0.08)'
+              }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  border: '2px solid #059669',
+                  flexShrink: 0
+                }}>
+                  <img 
+                    src="/pics/arfa_circle_favicon.png" 
+                    alt="Muhammad Arfa"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.6875rem', fontWeight: 700, color: '#059669', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    GCU Lahore BSCS
+                  </div>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 800, color: '#09090b', lineHeight: 1.1 }}>
+                    Muhammad Arfa
+                  </div>
+                  <div style={{ fontSize: '0.6875rem', color: '#64748b', fontWeight: 500 }}>
+                    Ex-ParkView City Intern
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Availability Beacon */}
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.625rem',
-              padding: '0.375rem 0.95rem',
+              gap: '0.5rem',
+              padding: '0.3rem 0.8rem',
               backgroundColor: '#ffffff',
               border: '1px solid #e2e8f0',
               borderRadius: 'var(--radius-full)',
-              marginBottom: '1.5rem',
-              boxShadow: 'var(--shadow-sm)'
+              marginBottom: '1.25rem',
+              boxShadow: 'var(--shadow-sm)',
+              maxWidth: '100%'
             }}>
               <span style={{
                 display: 'inline-flex',
-                height: '9px',
-                width: '9px',
+                height: '8px',
+                width: '8px',
                 borderRadius: '50%',
                 backgroundColor: '#059669',
-                boxShadow: '0 0 0 3px rgba(5, 150, 105, 0.2)'
+                boxShadow: '0 0 0 3px rgba(5, 150, 105, 0.2)',
+                flexShrink: 0
               }} />
-              <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#334155' }}>
+              <span style={{ fontSize: '0.78125rem', fontWeight: 600, color: '#334155' }}>
                 Open to Software Engineering & Frontend Roles
               </span>
             </div>
 
             {/* Main Heading */}
             <h1 style={{
-              fontSize: 'clamp(2.5rem, 5vw, 3.85rem)',
+              fontSize: 'clamp(2rem, 6.5vw, 3.85rem)',
               fontWeight: 800,
               color: '#09090b',
-              lineHeight: 1.08,
-              letterSpacing: '-0.035em',
-              marginBottom: '0.875rem'
+              lineHeight: 1.12,
+              letterSpacing: '-0.03em',
+              marginBottom: '0.75rem'
             }}>
               Hi, I'm <span style={{
                 background: 'linear-gradient(135deg, #059669 0%, #0d9488 100%)',
@@ -101,12 +143,12 @@ export default function Hero() {
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.6rem',
-              fontSize: 'clamp(1.1rem, 2.2vw, 1.35rem)',
+              gap: '0.5rem',
+              fontSize: 'clamp(0.95rem, 3.2vw, 1.25rem)',
               fontWeight: 600,
               color: '#52525b',
-              minHeight: '2.6rem',
-              marginBottom: '1.5rem',
+              minHeight: '2.4rem',
+              marginBottom: '1.25rem',
               flexWrap: 'wrap'
             }}>
               <span style={{ color: '#71717a' }}>Building software as</span>
@@ -114,14 +156,14 @@ export default function Hero() {
                 style={{
                   color: '#047857',
                   fontWeight: 700,
-                  padding: '0.22rem 0.75rem',
+                  padding: '0.2rem 0.65rem',
                   borderRadius: '8px',
                   backgroundColor: '#ecfdf5',
                   border: '1px solid #a7f3d0',
                   boxShadow: '0 1px 3px rgba(5,150,105,0.08)',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.4rem',
+                  gap: '0.35rem',
                   transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
                   opacity: isFading ? 0 : 1,
                   transform: isFading ? 'translateY(4px)' : 'translateY(0)'
@@ -301,7 +343,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Clean Muhammad Arfa Portrait - No Overlay Clutter */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <div className="hero-desktop-portrait" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             
             <div style={{
               width: '100%',

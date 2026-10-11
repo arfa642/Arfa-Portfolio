@@ -143,13 +143,14 @@ export default function Navbar() {
         </nav>
 
         {/* Right CTA / Social Icons */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           
           <a
             href={personalData.github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
+            className="desktop-social-link"
             style={{
               width: '38px',
               height: '38px',
@@ -162,16 +163,6 @@ export default function Navbar() {
               background: '#ffffff',
               transition: 'all 0.2s ease',
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = '#0f172a';
-              e.currentTarget.style.borderColor = '#94a3b8';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = '#334155';
-              e.currentTarget.style.borderColor = '#e2e8f0';
-              e.currentTarget.style.transform = 'translateY(0)';
-            }}
           >
             <Github size={18} />
           </a>
@@ -181,6 +172,7 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
+            className="desktop-social-link"
             style={{
               width: '38px',
               height: '38px',
@@ -193,14 +185,6 @@ export default function Navbar() {
               background: '#ffffff',
               transition: 'all 0.2s ease',
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = '#0077b5';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = '#e2e8f0';
-              e.currentTarget.style.transform = 'translateY(0)';
-            }}
           >
             <Linkedin size={18} />
           </a>
@@ -208,15 +192,19 @@ export default function Navbar() {
           <a
             href={personalData.resumeUrl}
             download="Muhammad_Arfa_Resume.pdf"
-            className="btn-primary"
+            className="btn-pro-primary nav-resume-btn"
             style={{
-              padding: '0.5rem 1.125rem',
-              fontSize: '0.84375rem',
-              textDecoration: 'none'
+              padding: '0.45rem 0.95rem',
+              fontSize: '0.8125rem',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              borderRadius: 'var(--radius-full)'
             }}
           >
-            <FileDown size={16} />
-            <span>Resume</span>
+            <FileDown size={15} />
+            <span>CV</span>
           </a>
 
           {/* Mobile Menu Toggle Button */}
@@ -228,12 +216,13 @@ export default function Navbar() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: '40px',
-              height: '40px',
-              borderRadius: '8px',
+              width: '38px',
+              height: '38px',
+              borderRadius: '10px',
               border: '1px solid #e2e8f0',
               background: '#ffffff',
-              color: '#0f172a'
+              color: '#09090b',
+              cursor: 'pointer'
             }}
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -247,11 +236,11 @@ export default function Navbar() {
         <div style={{
           background: '#ffffff',
           borderBottom: '1px solid #e2e8f0',
-          padding: '1.25rem 1.5rem',
-          boxShadow: 'var(--shadow-lg)',
+          padding: '1.25rem 1.25rem',
+          boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.08)',
           animation: 'fadeIn 0.2s ease'
         }}>
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
             {navItems.map((item) => (
               <li key={item.id}>
                 <button
@@ -259,34 +248,82 @@ export default function Navbar() {
                   style={{
                     width: '100%',
                     textAlign: 'left',
-                    padding: '0.75rem 1rem',
+                    padding: '0.625rem 0.875rem',
                     borderRadius: '8px',
-                    fontSize: '0.9375rem',
+                    fontSize: '0.875rem',
                     fontWeight: activeSection === item.id ? 700 : 500,
                     color: activeSection === item.id ? '#059669' : '#334155',
                     background: activeSection === item.id ? '#ecfdf5' : 'transparent',
+                    cursor: 'pointer'
                   }}
                 >
                   {item.label}
                 </button>
               </li>
             ))}
-            <li style={{ paddingTop: '0.75rem', borderTop: '1px solid #e2e8f0', display: 'flex', gap: '0.75rem' }}>
+            <li style={{ paddingTop: '0.75rem', borderTop: '1px solid #e2e8f0', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <a
+                href={personalData.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  padding: '0.45rem 0.8rem',
+                  backgroundColor: '#f8fafc',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '8px',
+                  fontSize: '0.8125rem',
+                  fontWeight: 600,
+                  color: '#09090b',
+                  textDecoration: 'none'
+                }}
+              >
+                <Github size={14} />
+                <span>GitHub</span>
+              </a>
+              <a
+                href={personalData.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  padding: '0.45rem 0.8rem',
+                  backgroundColor: '#f0f9ff',
+                  border: '1px solid #bae6fd',
+                  borderRadius: '8px',
+                  fontSize: '0.8125rem',
+                  fontWeight: 600,
+                  color: '#0284c7',
+                  textDecoration: 'none'
+                }}
+              >
+                <Linkedin size={14} />
+                <span>LinkedIn</span>
+              </a>
               <a
                 href={personalData.googleDocResume}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.5rem',
-                  fontSize: '0.875rem',
+                  gap: '0.4rem',
+                  padding: '0.45rem 0.8rem',
+                  backgroundColor: '#ecfdf5',
+                  border: '1px solid #a7f3d0',
+                  borderRadius: '8px',
+                  fontSize: '0.8125rem',
                   color: '#059669',
-                  fontWeight: 600
+                  fontWeight: 600,
+                  textDecoration: 'none'
                 }}
               >
-                <span>View Google Doc Resume</span>
-                <ExternalLink size={14} />
+                <span>Google Doc CV</span>
+                <ExternalLink size={13} />
               </a>
             </li>
           </ul>
@@ -300,6 +337,11 @@ export default function Navbar() {
             display: block !important;
           }
           .mobile-menu-btn {
+            display: none !important;
+          }
+        }
+        @media (max-width: 899px) {
+          .desktop-social-link {
             display: none !important;
           }
         }
